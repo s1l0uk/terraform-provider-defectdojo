@@ -141,7 +141,7 @@ func (t productResource) Schema(ctx context.Context, req resource.SchemaRequest,
 				ElementType:         types.StringType,
 				Validators: []validator.Set{
 					setvalidator.ValueStringsAre(
-						stringvalidator.RegexMatches(regexp.MustCompile(`\A[a-z]+\z`), "Tags must be lower case values"),
+						stringvalidator.RegexMatches(regexp.MustCompile(`\A[^A-Z]+\z`), "Uppercase Tags cause instability. Please replace with lowercase."),
 					),
 				},
 			},
